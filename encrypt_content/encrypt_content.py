@@ -34,7 +34,8 @@ with pelican_open(DECRYPT_FORM_TPL_PATH) as template:
 
 settings = {
     'title_prefix': '',
-    'summary': ''
+    'summary': '',
+    'explanation': '',
 }
 
 
@@ -80,6 +81,7 @@ def encrypt_content(content):
 
     decrypt_form = Template(DECRYPT_FORM_TPL).render({
         'summary': settings['summary'],
+        'explanation': settings['explanation'],
         # this benign decoding is necessary before writing to the template, 
         # otherwise the output string will be wrapped with b''
         'ciphertext_bundle': b';'.join(ciphertext_bundle).decode('ascii'),
